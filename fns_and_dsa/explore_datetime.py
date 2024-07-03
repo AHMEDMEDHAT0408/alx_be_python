@@ -1,7 +1,21 @@
 import datetime
-date_now = datetime.datetime.now()
-print(f"Current date and time: {date_now}")
-days = int(input("Enter the number of days to add to the current date: "))
-future_date = date_now + datetime.timedelta(days=days)
-future_date_only_date = future_date.date()
-print(f"Future date: {future_date_only_date}")
+
+def display_current_datetime():
+    current_date_time = datetime.datetime.now()
+    formatted_current_date_time = current_date_time.date()
+    print(f"Current date and time: {formatted_current_date_time}")
+
+def calculate_future_date():
+    days = int(input("Enter the number of days to add to the current date: "))
+    current_date = datetime.datetime.now().date()
+    future_date = current_date + datetime.timedelta(days=days)
+    formatted_future_date = future_date
+    print(f"Future date: {formatted_future_date}")
+
+def main():
+    display_current_datetime()
+    calculate_future_date()
+
+
+if __name__ == "__main__":
+    main()
