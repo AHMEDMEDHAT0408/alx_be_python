@@ -14,16 +14,13 @@ def convert_to_fahrenheit(celsius):
 
 # Main program execution
 if __name__ == "__main__":
-    # User input for temperature and type of conversion
     temperature = input("Enter the temperature to convert: ").strip()
     conversion_type = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().upper()
 
-    # Valid conversion options
     conversion_options = ["F", "C"]
 
-    # Input validation
-    if temperature.isdigit():  # Check if input is a digit
-        temp = float(temperature)  # Convert input to float
+    if temperature.isdigit():
+        temp = float(temperature)
 
         if conversion_type in conversion_options:
             if conversion_type == "F":
