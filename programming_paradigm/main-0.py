@@ -11,11 +11,27 @@ def main():
         sys.exit(1)
 
     command, *params = sys.argv[1].split(':')
-    amount = float(params[0]) if params else None
+    amount = params[0] if params else None
 
-    if command == "deposit" and amount is not None:
+    if command == "deposit":
+        if amount is None:
+            print("Invalid amount provided.")
+            sys.exit(1)
+        try:
+            amount = float(amount)
+        except ValueError:
+            print("Invalid amount format.")
+            sys.exit(1)
         account.deposit(amount)
-    elif command == "withdraw" and amount is not None:
+    elif command == "withdraw":
+        if amount is None:
+            print("Invalid amount provided.")
+            sys.exit(1)
+        try:
+            amount = float(amount)
+        except ValueError:
+            print("Invalid amount format.")
+            sys.exit(1)
         account.withdraw(amount)
     elif command == "display":
         account.display_balance()
