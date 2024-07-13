@@ -3,8 +3,11 @@ class BankAccount:
         self.account_balance = initial_balance
 
     def deposit(self, amount):
+        print("Executing deposit method.")
+        print(f"Before Deposit: ${self.account_balance}")
         self.account_balance += amount
         print(f"Deposited: ${amount}")
+        print(f"After Deposit: ${self.account_balance}")
 
     def withdraw(self, amount):
         if self.account_balance >= amount:
@@ -15,3 +18,27 @@ class BankAccount:
 
     def display_balance(self):
         print(f"Current Balance: ${self.account_balance}")
+
+# Main script
+def main():
+    account = BankAccount(100)  # Example starting balance
+
+    if len(sys.argv) < 2:
+        print("Usage: python main-0.py <command>:<amount>")
+        print("Commands: deposit, withdraw, display")
+        sys.exit(1)
+
+    command, *params = sys.argv[1].split(':')
+    amount = float(params[0]) if params else None
+
+    if command == "deposit" and amount is not None:
+        account.deposit(amount)
+    elif command == "withdraw" and amount is not None:
+        account.withdraw(amount)
+    elif command == "display":
+        account.display_balance()
+    else:
+        print("Invalid command.")
+
+if __name__ == "__main__":
+    main()
